@@ -1,82 +1,54 @@
 # Authorized Security Research Portfolio
 
-Public, sanitized evidence of independent web application security research by **@OWWWX-WQ**.
+Public, sanitized evidence of independent web, API, and desktop-client security research by **[@OWWWX-WQ](https://github.com/OWWWX-WQ)**.
 
 ## Purpose
 
-This repository documents security work performed only in authorized CTF, laboratory, self-owned, or explicitly approved assessment environments. It is published as verifiable evidence of practical security research experience.
+This repository documents work performed only in authorized CTF, laboratory, self-owned, or explicitly approved assessment environments. Live hostnames, credentials, cookies, API keys, payment identifiers, customer data, private infrastructure details, and operational exploit payloads are removed or generalized.
 
-All live hostnames, credentials, cookies, API keys, payment identifiers, customer data, raw exploit payloads, and confidential authorization records have been removed or generalized.
+**For reviewers:** start with the [Reviewer Guide](REVIEWER-GUIDE.md), then check [Provenance](PROVENANCE.md) and the [Sanitized Evidence Ledger](EVIDENCE.md).
 
-## Featured Research
+## Case Studies
 
-### Authorized E-commerce Payment Workflow Assessment
+| Case study | Discipline | Evidence focus |
+|---|---|---|
+| [Authorized E-commerce Payment Workflow Assessment](reports/authorized-ecommerce-payment-assessment.md) | Web / business logic | Callback authenticity, state consistency, transaction binding, order authorization |
+| [Windows Desktop Client Security Architecture Review](reports/windows-desktop-client-security-review.md) | PE / runtime / local API | Protected PE triage, OneFile extraction, process mapping, localhost authorization |
+| [Public API Protocol Security Assessment](reports/public-api-protocol-security-assessment.md) | API / protocol | Query-key handling, error semantics, parameter pollution, TLS examples, replay design |
+| [Admin Frontend Source Exposure and Queue Review](reports/admin-frontend-source-exposure-and-queue-review.md) | Frontend / API / reliability | Source maps, endpoint inventory, privileged links, polling and refresh queues |
+| [Zero-Purchase Business-Logic CTF Challenge Design](reports/ctf-zero-purchase-challenge-design.md) | CTF / exercise design | Authorized scope, synthetic data, safety controls, judging and smoke tests |
 
-A controlled assessment of an e-commerce payment and digital-delivery workflow, covering:
-
-- payment callback authenticity and strict signature validation;
-- merchant/provider state consistency;
-- transaction identifier uniqueness and replay resistance;
-- order-detail authorization and digital-goods exposure;
-- HTTP/TLS, session, and cookie security;
-- evidence-driven remediation and retesting.
-
-**Read the sanitized case study:** [Authorized E-commerce Payment Workflow Assessment](reports/authorized-ecommerce-payment-assessment.md)
-
-## Skills Demonstrated
+## Capabilities Demonstrated
 
 - HTTP request and response analysis
-- Business-logic and state-machine testing
-- Payment workflow integrity validation
-- Replay and idempotency testing
+- Web and API attack-surface mapping
 - Authentication, session, and object-access review
-- Negative controls and reproducible evidence chains
-- Risk classification and engineering-focused remediation
-- Post-fix verification criteria
+- Business-logic and state-machine testing
+- Payment integrity, replay, and idempotency testing
+- Frontend source-map and asynchronous workflow analysis
+- PE triage, protected-binary analysis, container extraction, and runtime observation
+- Negative controls, evidence fingerprints, correction records, and retesting
+- Root-cause remediation and defensive architecture design
 
-## Research Method
+## Research Standard
 
-1. Establish written scope and testing boundaries.
-2. Record a normal baseline transaction.
-3. Form a falsifiable security hypothesis.
-4. Test only self-created accounts, orders, and synthetic data.
-5. Compare merchant state with the independent provider state.
-6. Preserve redacted request/response and state-transition evidence.
-7. Stop at proof of impact and avoid unnecessary data access.
-8. Provide root-cause fixes and measurable retest conditions.
+1. Establish explicit authorization, test identities, scope, and stop conditions.
+2. Record a normal baseline before testing a hypothesis.
+3. Change one security-relevant variable where practical.
+4. Use synthetic accounts, objects, orders, and data.
+5. Separate confirmed, code-confirmed, conditional, negative, and retracted results.
+6. Preserve reproducible evidence without publishing sensitive material.
+7. Stop at proof of impact and provide measurable remediation criteria.
 
-## Selected Results
-
-The featured assessment identified several security-relevant design failures in a controlled environment, including:
-
-- acceptance of an improperly validated callback authenticity value;
-- merchant-side completion while the payment provider did not report success;
-- reuse of one provider transaction identifier across different merchant orders;
-- insufficient authorization around completed-order details;
-- transport and cookie settings that increased session replay exposure.
-
-Testing used only authorized synthetic orders. No third-party customer information or production secrets are published.
-
-## Remediation Themes
-
-- Verify callback signatures using canonical input, strict types, and constant-time comparison.
-- Bind provider, merchant, transaction ID, order ID, currency, and amount immutably.
-- Enforce a database-level uniqueness constraint for payment transactions.
-- Process pending-to-paid transitions atomically and idempotently.
-- Require explicit authorization for order and digital-delivery resources.
-- Force HTTPS and use Secure, HttpOnly, and appropriate SameSite cookie attributes.
-- Log duplicate callbacks, state mismatches, and rejected authenticity checks.
+Read the full [Security Assessment Methodology](METHODOLOGY.md) and [Responsible Research and Disclosure Policy](DISCLOSURE.md).
 
 ## Verification and Provenance
 
-This repository is authored and maintained by **@OWWWX-WQ**. Original authorization records and raw test evidence are retained offline and may be made available privately to legitimate reviewers subject to confidentiality requirements.
+This portfolio is authored and maintained by **@OWWWX-WQ**. Original authorization records and raw evidence are retained offline and may be made available privately to legitimate reviewers where confidentiality requirements permit.
 
-This publication is a sanitized research portfolio, not a claim of a CVE assignment or a disclosure of an actively exploitable public target.
-
-## Contact
-
-For professional verification, use this GitHub profile and repository history. Additional organizational or security-team references can be provided privately where permitted.
+The repository does not claim a CVE assignment, vendor acknowledgement, employment relationship, or production impact that has not been independently established.
 
 ---
 
-Published: 31 August 2026
+Last updated: 31 August 2026
+
